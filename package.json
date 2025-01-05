@@ -1,0 +1,61 @@
+{
+  "name": "react-solution-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "npm run build && vite preview",
+    "start:server": "cross-env NODE_ENV=development npm run node:server",
+    "build:server": "npm run build && vite build --ssr index.tsx",
+    "preview:server": "npm run build:server && npm run node:server",
+    "node:server": "cross-env NODE_OPTIONS=\"--import=./server/register.js\" node ./server/index.ts",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "check:lint": "eslint",
+    "check:lint:fix": "eslint --fix",
+    "check:types": "tsc --noEmit",
+    "check:prettier": "prettier . --check",
+    "check:prettier:fix": "prettier . --write"
+  },
+  "workspaces": [
+    "./packages",
+    "./server",
+    "./src"
+  ],
+  "dependencies": {
+    "react-solution": "4.2.0",
+    "merge-change": "^1.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/dotenv-parse-variables": "^2.0.3",
+    "@types/eslint__js": "^8.42.3",
+    "@types/jest": "^29.5.13",
+    "@vitejs/plugin-react": "^4.3.1",
+    "cross-env": "^7.0.3",
+    "dotenv-parse-variables": "^2.0.0",
+    "eslint": "^9.11.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.36.1",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0",
+    "less": "^4.2.1",
+    "prettier": "^3.3.3",
+    "rollup-plugin-typescript-paths": "^1.5.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.6.0",
+    "vite": "^5.4.7",
+    "vite-plugin-checker": "^0.8.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-no-bundle": "^4.0.0",
+    "vite-plugin-static-copy": "^1.0.6"
+  }
+}
