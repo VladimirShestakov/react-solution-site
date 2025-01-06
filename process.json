@@ -9,7 +9,7 @@
       "node_args": "",
       "env": {
         "NODE_ENV": "production",
-        "NODE_OPTION": "--loader ts-node/esm"
+        "NODE_OPTION": "--import=./server/register.js"
       }
     }
   ]
