@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useSyncExternalStore } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { LayoutDoc } from '@src/components/layouts/layout-doc';
 import { LayoutContent } from '@src/components/layouts/layout-content';
 import MarkdownIt from 'markdown-it';
@@ -12,8 +12,9 @@ import { DOCUMENTS_STORE } from '@src/documents/store/token.ts';
 export const DocPage = memo(() => {
   const docs = useSolution(DOCUMENTS_STORE)
   const params = useParams();
+  const navigate = useNavigate()
 
-  let path = params['*'] || '';
+  let path = params['*'] || '1.%20Новый%20проект.md';
   if (!path.match(/\.md$/)) {
     path += '/index.md';
   }
@@ -55,14 +56,13 @@ export const DocPage = memo(() => {
     onClick: useCallback((e: React.MouseEvent<HTMLDivElement>) => {
       if (!(e.target instanceof HTMLElement)) return;
       const link = e.target.closest('a');
-      if (!(link instanceof HTMLLinkElement)) return;
-      const url = link.href || '';
+      const url = link?.attributes.getNamedItem('href')?.value || '';
       if (!url.match(/^http/)) {
         e.preventDefault();
         e.stopPropagation();
-        // navigation.push(url);
+        navigate(url);
       } else {
-        link.setAttribute('target', '_blank');
+        link?.setAttribute('target', '_blank');
       }
     }, []),
   };
