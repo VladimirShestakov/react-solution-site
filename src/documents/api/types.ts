@@ -1,3 +1,3 @@
 export type DocumentsApiConfig = {
-  baseURL: string;
+  url?: string;
 };

@@ -6,10 +6,5 @@ export default function proxyConfig(env: Env) {
       changeOrigin: true,
       timeout: 2000,
     },
-    '/VladimirShestakov': {
-      target: 'https://raw.githubusercontent.com',
-      secure: false,
-      changeOrigin: true,
-    }
   };
 }
