@@ -17,9 +17,11 @@ export const LayoutDoc = memo((props: Props) => {
 
   return (
     <div className="LayoutDoc">
-      <aside className="LayoutDoc__side">
-        <div className="LayoutDoc__wrap">{props.side}</div>
-      </aside>
+      {props.side ? (
+        <aside className="LayoutDoc__side">
+          <div className="LayoutDoc__wrap">{props.side}</div>
+        </aside>
+      ): null}
       <div className="LayoutDoc__content">
         <div className="LayoutDoc__wrap" ref={refContent}>
           {props.children || props.content}

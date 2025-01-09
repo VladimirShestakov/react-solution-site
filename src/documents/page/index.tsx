@@ -64,7 +64,7 @@ export const DocPage = memo(() => {
   };
 
   return (
-    <LayoutDoc side={<div></div>}>
+    <LayoutDoc scrollDepends={path}>
       <LayoutContent>
         <div
           className="markdown-body"
