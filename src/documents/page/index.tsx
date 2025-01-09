@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useSyncExternalStore } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { LayoutDoc } from '@src/components/layouts/layout-doc';
 import { LayoutContent } from '@src/components/layouts/layout-content';
@@ -6,7 +6,7 @@ import MarkdownIt from 'markdown-it';
 import 'highlight.js/styles/vs2015.min.css';
 import './markdown/style.css';
 import hljs from 'highlight.js';
-import { useSolution, useInit } from 'react-solution';
+import { useSolution, useInit, useExternalState } from 'react-solution';
 import { DOCUMENTS_STORE } from '@src/documents/store/token.ts';
 
 export const DocPage = memo(() => {
@@ -23,11 +23,7 @@ export const DocPage = memo(() => {
     await docs.load(path)
   }, [path], {ssr: 'doc-page'})
 
-  const docState = useSyncExternalStore(
-    docs.state.subscribe,
-    docs.state.get,
-    docs.state.get,
-  )
+  const docState = useExternalState(docs.state)
 
   const md = useMemo(
     () =>
