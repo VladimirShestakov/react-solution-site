@@ -52,7 +52,8 @@ export const DocPage = memo(() => {
     onClick: useCallback((e: React.MouseEvent<HTMLDivElement>) => {
       if (!(e.target instanceof HTMLElement)) return;
       const link = e.target.closest('a');
-      const url = link?.attributes.getNamedItem('href')?.value || '';
+      if (!link) return;
+      const url = link.attributes.getNamedItem('href')?.value || '';
       if (!url.match(/^http/)) {
         e.preventDefault();
         e.stopPropagation();
