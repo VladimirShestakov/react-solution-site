@@ -8,13 +8,15 @@ import './markdown/style.css';
 import hljs from 'highlight.js';
 import { useSolution, useInit, useExternalState } from 'react-solution';
 import { DOCUMENTS_STORE } from '@src/documents/store/token.ts';
+// @ts-ignore
+import taskLists from 'markdown-it-task-lists';
 
 export const DocPage = memo(() => {
   const docs = useSolution(DOCUMENTS_STORE)
   const params = useParams();
   const navigate = useNavigate()
 
-  let path = params['*'] || '1.%20Новый%20проект.md';
+  let path = params['*'] || 'main.md';
   if (!path.match(/\.md$/)) {
     path += '/index.md';
   }
@@ -44,7 +46,7 @@ export const DocPage = memo(() => {
           return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
         },
         html: true,
-      }),
+      }).use(taskLists),
     [hljs],
   );
 
@@ -63,6 +65,24 @@ export const DocPage = memo(() => {
       }
     }, []),
   };
+
+  const x = `
+
+1. [x] Заменить алиас @packages на относительные пути, так как ts на node.js не понимает их.
+    1. [x] Если реализовать монорепу, то пути заменить на импорт пакета react-skeleton
+2. [x] Обновить пакеты
+- [x] Отрефакторить /root.tsx и /index.tsx - упростить и вынести "мусор"
+    - [x] Попробовать перенести ssr/render в сервис render
+- [x] Монорепа: react-skeleton, пример фронта и сервера как отдельные npm пакеты
+- [x] Опубликовать NPM пакет react-skeleton.
+    - [x] Переименован в react-solution
+    - [x] Билд typescript в js
+        - [x] Нужно учитывать правила чистого EcmaScriptModules (полные пути на js файлы)
+            - [x] Применить vite, так как tsc не умеют полностью всё как надо собирать
+        - [x] Различать сборки для ноды и браузер. Возможно сделать две точки входы (экспорта) - общие пакеты и для ноды.
+  `
+
+  console.log(md.parse(x, {}))
 
   return (
     <LayoutDoc scrollDepends={path}>

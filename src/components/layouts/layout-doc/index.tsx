@@ -12,7 +12,7 @@ export const LayoutDoc = memo((props: Props) => {
   const refContent = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    refContent.current?.scrollTo(0, 0);
+    refContent.current?.scrollTo({top: 0, behavior: 'smooth'});
   }, [refContent, props.scrollDepends]);
 
   return (
