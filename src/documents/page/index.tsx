@@ -82,8 +82,6 @@ export const DocPage = memo(() => {
         - [x] Различать сборки для ноды и браузер. Возможно сделать две точки входы (экспорта) - общие пакеты и для ноды.
   `
 
-  console.log(md.parse(x, {}))
-
   return (
     <LayoutDoc scrollDepends={path}>
       <LayoutContent>
