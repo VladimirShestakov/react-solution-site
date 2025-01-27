@@ -1,0 +1,13 @@
+.Head {
+  text-align: center;
+  padding: 15px 15px 0;
+
+  a {
+    color: #686868;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

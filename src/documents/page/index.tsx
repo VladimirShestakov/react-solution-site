@@ -5,11 +5,13 @@ import { LayoutContent } from '@src/components/layouts/layout-content';
 import MarkdownIt from 'markdown-it';
 import 'highlight.js/styles/vs2015.min.css';
 import './markdown/style.css';
+import './style.css';
 import hljs from 'highlight.js';
 import { useSolution, useInit, useExternalState } from 'react-solution';
 import { DOCUMENTS_STORE } from '@src/documents/store/token.ts';
 // @ts-ignore
 import taskLists from 'markdown-it-task-lists';
+import { Link } from 'react-router-dom';
 
 export const DocPage = memo(() => {
   const docs = useSolution(DOCUMENTS_STORE)
@@ -85,6 +87,7 @@ export const DocPage = memo(() => {
   return (
     <LayoutDoc scrollDepends={path}>
       <LayoutContent>
+        <div className="Head"><Link to={'/'}>React Solution</Link></div>
         <div
           className="markdown-body"
           dangerouslySetInnerHTML={{ __html: md.render(docState.content) }}

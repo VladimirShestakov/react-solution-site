@@ -16,7 +16,7 @@
 
 @media (max-width: 767px) {
   .markdown-body {
-    padding: 35px 15px 60px;
+    padding: 35px 15px 70px;
     font-size: 16px;
   }
 }
@@ -115,7 +115,7 @@
 .markdown-body kbd,
 .markdown-body pre {
   font-family: monospace, monospace;
-  font-size: 1em;
+  /*font-size: 1em;*/
 }
 
 .markdown-body hr {
@@ -695,7 +695,7 @@
 
 .markdown-body h1 {
 /*  !*font-size: 2em;*!*/
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 /*!*.markdown-body h1*!*/
