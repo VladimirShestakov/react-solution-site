@@ -1,6 +1,7 @@
 import { I18N_CFG, LOG_CFG } from 'react-solution';
 import { config } from 'react-solution';
 import { HTTP_CLIENT_CFG } from 'react-solution';
+import { DOCUMENTS_STORE_CFG } from '@src/documents/store/token.ts';
 
 export const configs = [
   config(HTTP_CLIENT_CFG, ({ env }) => ({
@@ -10,6 +11,10 @@ export const configs = [
     //headers: {},
     //auth:{} base auth
   })),
+
+  config(DOCUMENTS_STORE_CFG, {
+    baseUrl: '/VladimirShestakov/react-solution-pages/master/'
+  }),
 
   config(I18N_CFG, {
     locale: 'ru-RU', // локаль по умолчанию если не будет определена автоматически
