@@ -2,14 +2,14 @@
   "apps": [
     {
       "name": "SSR",
-      "script": "server/index.ts",
-      "instances": "1",
+      "script": "./server/index.ts",
+      "instances": 1,
       "exec_mode": "cluster",
       "watch": false,
-      "node_args": "",
+      "interpreter": "node",
+      "interpreter_args": "--import=./server/register.js",
       "env": {
-        "NODE_ENV": "production",
-        "NODE_OPTION": "--import=./server/register.js"
+        "NODE_ENV": "production"
       }
     }
   ]
